@@ -14,14 +14,23 @@ using std::endl;
 
 int main( int argc, char* argv[] )
 {
-    Mat img_object = imread("box.png", CV_LOAD_IMAGE_GRAYSCALE);
-    Mat img_scene = imread( "box_in_scene.png" , CV_LOAD_IMAGE_GRAYSCALE );
+    Mat img_object = imread("./img/box.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat img_scene = imread( "./img/box_in_scene.png" , CV_LOAD_IMAGE_GRAYSCALE );
 
     if ( img_object.empty() || img_scene.empty() )
     {
         cout << "Could not open or find the image!\n" << endl;
         return -1;
     }
+
+    namedWindow( "Object", WINDOW_AUTOSIZE );// Create a window for display.
+    imshow( "Object", img_object );                   // Show our image inside it.
+    
+    namedWindow( "Main Image", WINDOW_AUTOSIZE );// Create a window for display.
+    imshow( "Main Image", img_scene );   
+
+    waitKey(0);
+
     //-- Step 1: Detect the keypoints using SURF Detector, compute the descriptors
     int minHessian = 400;
     Ptr<SURF> detector = SURF::create( minHessian );
