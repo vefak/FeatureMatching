@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/finder.h
+/home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/main.cpp
 iostream
 -
 opencv2/core.hpp
@@ -21,12 +21,6 @@ opencv2/features2d.hpp
 /home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/opencv2/features2d.hpp
 opencv2/xfeatures2d.hpp
 /home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/opencv2/xfeatures2d.hpp
-
-/home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/main.cpp
-finder.h
-/home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/finder.h
-iostream
--
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h
