@@ -123,6 +123,33 @@ findingImages/fast:
 	$(MAKE) -f CMakeFiles/findingImages.dir/build.make CMakeFiles/findingImages.dir/build
 .PHONY : findingImages/fast
 
+filter.o: filter.cpp.o
+
+.PHONY : filter.o
+
+# target to build an object file
+filter.cpp.o:
+	$(MAKE) -f CMakeFiles/findingImages.dir/build.make CMakeFiles/findingImages.dir/filter.cpp.o
+.PHONY : filter.cpp.o
+
+filter.i: filter.cpp.i
+
+.PHONY : filter.i
+
+# target to preprocess a source file
+filter.cpp.i:
+	$(MAKE) -f CMakeFiles/findingImages.dir/build.make CMakeFiles/findingImages.dir/filter.cpp.i
+.PHONY : filter.cpp.i
+
+filter.s: filter.cpp.s
+
+.PHONY : filter.s
+
+# target to generate assembly for a file
+filter.cpp.s:
+	$(MAKE) -f CMakeFiles/findingImages.dir/build.make CMakeFiles/findingImages.dir/filter.cpp.s
+.PHONY : filter.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... findingImages"
 	@echo "... edit_cache"
+	@echo "... filter.o"
+	@echo "... filter.i"
+	@echo "... filter.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

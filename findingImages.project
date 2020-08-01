@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CodeLite_Project Name="findingImages" InternalType="">
 	<VirtualDirectory Name="src">
+		<File Name="filter.cpp"/>
 		<File Name="main.cpp"/>
 	</VirtualDirectory>
-	<VirtualDirectory Name="include"/>
+	<VirtualDirectory Name="include">
+		<File Name="filter.h"/>
+	</VirtualDirectory>
 	<Settings Type="">
 		<Configuration Name="NoConfig" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
 			<Compiler Options="-g" Required="yes" PreCompiledHeader="">

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/findingImages.dir/main.cpp.o"
+  "CMakeFiles/findingImages.dir/filter.cpp.o"
   "findingImages.pdb"
   "findingImages"
 )
