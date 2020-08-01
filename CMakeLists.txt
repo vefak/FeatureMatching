@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project( findingImages )
 find_package( OpenCV REQUIRED )
-add_executable( findingImages main.cpp )
+add_executable( findingImages main.cpp filter.cpp)
 include_directories(${YOUR_DIRECTORY})
 target_link_libraries( findingImages ${OpenCV_LIBS} )
