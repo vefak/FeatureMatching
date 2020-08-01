@@ -8,12 +8,14 @@
 #include "opencv2/xfeatures2d.hpp"
 using namespace cv;
 using namespace cv::xfeatures2d;
-using std::cout;
-using std::endl;
+using namespace std;
 
-
+bool showImages = false;
 int main( int argc, char* argv[] )
 {
+    Mat img_object = imread("./img/Small_area_rotated.png", CV_LOAD_IMAGE_GRAYSCALE);
+    //Mat img_scene = imread( "./img/StarMap.png" , CV_LOAD_IMAGE_GRAYSCALE );
+
     Mat img_object = imread("./img/box.png", CV_LOAD_IMAGE_GRAYSCALE);
     Mat img_scene = imread( "./img/box_in_scene.png" , CV_LOAD_IMAGE_GRAYSCALE );
 
@@ -23,16 +25,24 @@ int main( int argc, char* argv[] )
         return -1;
     }
 
-    namedWindow( "Object", WINDOW_AUTOSIZE );// Create a window for display.
-    imshow( "Object", img_object );                   // Show our image inside it.
+    cout << "Size of Image Object: " <<  img_object.size() << endl;
+    cout << "Size of Image Scene: " <<  img_scene.size() << endl;
+
+
+    if(showImages){
+
+    namedWindow( "Object", WINDOW_AUTOSIZE );
+    imshow( "Object", img_object );                  
     
-    namedWindow( "Main Image", WINDOW_AUTOSIZE );// Create a window for display.
+    namedWindow( "Main Image", WINDOW_AUTOSIZE );
     imshow( "Main Image", img_scene );   
 
     waitKey(0);
+    }
+    
 
     //-- Step 1: Detect the keypoints using SURF Detector, compute the descriptors
-    int minHessian = 400;
+    int minHessian = 50;
     Ptr<SURF> detector = SURF::create( minHessian );
     std::vector<KeyPoint> keypoints_object, keypoints_scene;
     Mat descriptors_object, descriptors_scene;
@@ -44,7 +54,7 @@ int main( int argc, char* argv[] )
     std::vector< std::vector<DMatch> > knn_matches;
     matcher->knnMatch( descriptors_object, descriptors_scene, knn_matches, 2 );
     //-- Filter matches using the Lowe's ratio test
-    const float ratio_thresh = 0.75f;
+    const float ratio_thresh = 0.55f;
     std::vector<DMatch> good_matches;
     for (size_t i = 0; i < knn_matches.size(); i++)
     {
@@ -57,6 +67,8 @@ int main( int argc, char* argv[] )
     Mat img_matches;
     drawMatches( img_object, keypoints_object, img_scene, keypoints_scene, good_matches, img_matches, Scalar::all(-1),
                  Scalar::all(-1), std::vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS );
+
+               
     //-- Localize the object
     std::vector<Point2f> obj;
     std::vector<Point2f> scene;
@@ -65,6 +77,7 @@ int main( int argc, char* argv[] )
         //-- Get the keypoints from the good matches
         obj.push_back( keypoints_object[ good_matches[i].queryIdx ].pt );
         scene.push_back( keypoints_scene[ good_matches[i].trainIdx ].pt );
+        cout <<   keypoints_object[ good_matches[i].queryIdx ].pt << endl;  
     }
     Mat H = findHomography( obj, scene, RANSAC );
     //-- Get the corners from the image_1 ( the object to be "detected" )
@@ -74,6 +87,8 @@ int main( int argc, char* argv[] )
     obj_corners[2] = Point2f( (float)img_object.cols, (float)img_object.rows );
     obj_corners[3] = Point2f( 0, (float)img_object.rows );
     std::vector<Point2f> scene_corners(4);
+
+    
     perspectiveTransform( obj_corners, scene_corners, H);
     //-- Draw lines between the corners (the mapped object in the scene - image_2 )
     line( img_matches, scene_corners[0] + Point2f((float)img_object.cols, 0),
