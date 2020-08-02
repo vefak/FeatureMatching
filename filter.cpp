@@ -1,6 +1,7 @@
 #include "filter.h"
 
-vector<Point2f> findingPlanar(Mat img_scene, Mat img_object, bool showImages, int hessian, float ratio) {
+vector<Point2f> findingPlanar(Mat img_scene, Mat img_object, bool showImages, bool saveImages, int hessian, float ratio) {
+    
     
     GaussianBlur(img_object,img_object,  Size(7,7),0,0);
     GaussianBlur(img_scene,img_scene, Size(7,7),0,0);
@@ -82,7 +83,17 @@ vector<Point2f> findingPlanar(Mat img_scene, Mat img_object, bool showImages, in
           scene_corners[0] + Point2f((float)img_object.cols, 0), Scalar( 0, 255, 0), 4 );
 
     imshow("Good Matches & Object detection", img_matches );
+    
+    if(saveImages){
+
+    imwrite("result.png", img_matches);
+
+    }
+
     waitKey();
+
+   
+
 
     return obj_corners;
 
@@ -99,5 +110,4 @@ void displayCorners(string namecorner, vector<Point2f> corners){
     cout << corners.at(i) << ' ';
   }
   cout << "  \n"  << endl;
-
 }
