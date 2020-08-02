@@ -24,7 +24,7 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local OPENCV_EXTR
 
 ### Building and Running Code
 
-Just exevute `build_and_run.sh ` file.
+Just execute `build_and_run.sh ` file.
 ```shell
 source build_and_run.sh 
 ```
