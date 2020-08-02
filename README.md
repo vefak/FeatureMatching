@@ -3,6 +3,12 @@
  *Author: Vefak Murat Akman*
 
  ---
+[//]: # (Image References)
+
+[image1]: ./img/result.png "Rotated"
+[image2]: ./img/result2.png "Normal"
+
+
 
 ### My enviroment
 * OpenCV version   = 3.14.0
@@ -30,3 +36,12 @@ source build_and_run.sh
 ```
 
 Hit any key to change current frame and open next one
+
+### Results
+
+#### Rotated Image Place
+![alt text][image1]
+
+#### Normal Image Place
+
+![alt text][image2]
