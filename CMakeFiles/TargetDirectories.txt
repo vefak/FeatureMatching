@@ -1,3 +1,0 @@
-/home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/CMakeFiles/rebuild_cache.dir
-/home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/CMakeFiles/findingImages.dir
-/home/vefak/Desktop/Locating-a-Defined-Area-in-the-Star/CMakeFiles/edit_cache.dir
